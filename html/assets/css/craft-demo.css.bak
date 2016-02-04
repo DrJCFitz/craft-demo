@@ -1,0 +1,48 @@
+h1, h2, h3 { font-family:helvetica; }
+
+#blurbContainer,
+hr.partial-width { width:80%; }
+
+#topContent, 
+#reviews,
+div.featured-thumbnails,
+.footer > .container { text-align: center }
+
+#topContent,
+div.blurb-icon,
+.carousel-description { display:inline-block }
+
+#external-links, 
+#external-links a { color:white; }
+
+.carousel-description,
+.carousel-image { width:40%; }
+
+hr.body-hr { margin-top: 0px; -webkit-margin-before: 0px; }
+p.blurb { font-size:120%; }
+img.featured { height:4em; }
+div.featured-thumbnails {  margin-top: 1em; margin-bottom: 2em; }
+.bullet-size { width:1.3em; }
+.carousel-description { font-size:1.3em; margin-left:auto; text-align:left; vertical-align:middle; }
+.carousel-description>ul>li { list-style-type:none; }
+.carousel-image { border:1px solid cornflowerblue; margin-left:5%; }
+.footer > .container > .fa-stack { margin-top:1em; }
+.footer { background-color: cornflowerblue; }
+.logo-inline-text { margin:0px -1px; width:1.3em; vertical-align:bottom; }
+.theme-foreground { color:cornflowerblue; }
+
+/* adjust fontawesome */
+.fa-stack { font-size:200% }
+
+/* override bootstrap */
+.navbar-default,
+.navbar-brand, 
+.navbar-nav>li>a { color:white!important; }
+
+.carousel-control.right, 
+.carousel-control.left { background-image:none; }
+
+.carousel-control { width:5%; color:cornflowerblue; }
+.featurette-heading { text-align:center; }
+.navbar-brand>img { display:inline; height:30px; vertical-align:top; }
+.navbar-default { background-color:cornflowerblue; border-color:blue; margin:0px; border-radius:0px; }
