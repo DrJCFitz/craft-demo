@@ -3,10 +3,10 @@ require_once('craftDemo.params'); // $appID stored here
 require_once('craftDB.php');
 
 $findAppKeySQL = "SELECT id FROM craft_demo.`app` WHERE appID = '".$appID."';";
-$dbAppKey = mysqli_query($connection, $findAppKeySQL);
-if ($appRow = mysqli_fetch_row($dbAppKey)) {
+$dbAppKey = $connection->query($findAppKeySQL);
+if ($appRow = $dbAppKey->fetch_row()) {
     $appKey = $appRow[0];
-
+echo 'appKey = '.json_encode($appKey);
     $req = curl_init("http://itunes.apple.com/rss/customerreviews/id=".$appID."/json");
     curl_setopt($req, CURLOPT_RETURNTRANSFER, 1);
     $res = json_decode(curl_exec($req),true);
@@ -35,8 +35,8 @@ if ($appRow = mysqli_fetch_row($dbAppKey)) {
             $insertSQL .= ", '".$reviewData[$counter]['content']['label']."'";
             $insertSQL .= ", ".floatval($reviewData[$counter]['im:rating']['label']).");";
 
-            $success = mysqli_query($connection, $insertSQL);
-            
+            $success = $connection->query($insertSQL);
+
             if ($success) {
                 $accepted_reviews++;
             }

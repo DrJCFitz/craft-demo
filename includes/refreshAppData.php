@@ -1,7 +1,6 @@
 <?php
 require_once('craftDemo.params');
 require_once('craftDB.php');
-//require_once('/var/www/includes/models/App.php');
 
 $queryParams = array('id'=>$appID);
 $queryString = http_build_query($queryParams);
@@ -31,18 +30,6 @@ if ($responseData['version']) {
     $insertSQL .= ", '".$responseData['version']."'";
 }
 $insertSQL .= ", ".$responseData['userRatingCount'].");";
-$success = mysqli_query($connection, $insertSQL);
+$success = $connection->query($insertSQL);
 
-echo 'query: '.$insertSQL;
-echo 'query is successful? '.json_encode($success);
-/*
-$app = new App($appID, 
-               $responseData['averageUserRating'], 
-               $responseData['userRatingCount'], 
-               $responseData['currency'], 
-               $responseData['price'], 
-               $responseData['sellerName'], 
-               $responseData['releaseDate']);
-$app->setSellerUrl($responseData['sellerUrl'])
-    ->setVersion($responseData['version']);*/
 ?>

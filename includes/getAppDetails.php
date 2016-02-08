@@ -8,11 +8,11 @@ function getAppDetails($appID, $connection) {
     $appQuerySQL .= ", userRatingCount, version";
     $appQuerySQL .= " FROM craft_demo.`app`";
     $appQuerySQL .= " WHERE appID = '".$appID."';";
-    $appResult = mysqli_query($connection, $appQuerySQL);
+    $appResult = $connection->query($appQuerySQL);
 
     $app = null;
     $rating_floor = 4;
-    if ($row = mysqli_fetch_assoc($appResult)) {
+    if ($row = $appResult->fetch_assoc()) {
         $app = new App($appID, $row['averageUserRating'], $row['userRatingCount'], $row['currency'], $row['price'], $row['sellerName'], $row['releaseDate']);
         
         if ($row['version']) {
@@ -28,8 +28,8 @@ function getAppDetails($appID, $connection) {
         $reviewQuerySQL .= " WHERE app_id = ".$row['id'];
         $reviewQuerySQL .= " AND rating > ".$rating_floor.";";
 
-        $reviewResult = mysqli_query($connection, $reviewQuerySQL);
-        while ($reviewRow = mysqli_fetch_assoc($reviewResult)) {
+        $reviewResult = $connection->query($reviewQuerySQL);
+        while ($reviewRow = $reviewResult->fetch_assoc()) {
             $review = new Review($reviewRow['author'], 
                                 $reviewRow['title'],
                                 $reviewRow['content'],
